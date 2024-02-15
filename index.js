@@ -9,7 +9,8 @@ app.use((req, res, next) => {
 });
 
 app.get('*', async(req, res) => {
-    return res.send(await fetch('https://choccycounts.com/api/messages').then(resp=>resp.json()).catch(console.error))
+    // must run HTTP temporarily before fixing SSL verification issues
+    return res.send(await fetch('http://choccycounts.com/api/messages').then(resp=>resp.json()).catch(console.error))
 });
 
 app.listen(PORT, () => {
